@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import { NoMatch } from './components/pages/NoMatch/NoMatch';
 import './App.css';
+import { Home } from './components/pages/Home/Home';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 function App() {
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <div className='App'>
+        <header className='App-header'>
+          <h2>Football App</h2>
+        </header>
+
+        <main className='main-container'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='*' element={<NoMatch />} />
+          </Routes>
+        </main>
+
+        <footer className='footer'>
+          <small>by Piotur D. AD. July 2022</small>
+        </footer>
+      </div>
+</ThemeProvider>
+
   );
 }
 
 export default App;
+
+
+<main>This app is using the dark mode</main>
