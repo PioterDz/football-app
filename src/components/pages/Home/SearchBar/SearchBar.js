@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { getCountries } from "../../../../services/GetCountries";
 import { Typeahead } from "../../../shared/Typeahead/Typeahead"
 
-export const SearchBar = () => {
+export const SearchBar = ({ itemSelected }) => {
     const [countries, setCountries] = useState([]);
-    const [countrySelected, selectCountry] = useState([]);
 
-    const handleCountrySelection = (country) => {
-        selectCountry(country);
+    const handleItemSelection = (country) => {
+        itemSelected(country);
     }
 
     useEffect(() => {
@@ -20,7 +19,7 @@ export const SearchBar = () => {
 
     return (
         <div>
-            <Typeahead options={countries} handleItemSelection={handleCountrySelection} />
+            <Typeahead options={countries} handleSelection={handleItemSelection} />
         </div>
     )
 }
