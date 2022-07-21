@@ -26,3 +26,13 @@ a {
   color: inherit;
   cursor: auto;
 }
+
+.win {
+  background-color: green;
+  color: white;
+}
+
+.lose {
+  background-color: red;
+  color: white;
+}

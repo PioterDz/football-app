@@ -36,7 +36,7 @@ export const LeaguesTable = ({ leagues }) => {
                             <TableCell>
                                 <Link to={'team/' + row.id}>
                                     <Tooltip title={`See the ${row.name}'s teams`}>
-                                    <GroupsRoundedIcon />
+                                        <GroupsRoundedIcon />
                                     </Tooltip>
                                 </Link>
                             </TableCell>

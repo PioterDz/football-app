@@ -26,7 +26,7 @@ export const Teams = () => {
     return (
         <div>
             <SelectComp items={seasons.map(season => ({ value: season, label: season }))} selectAttr={selectAttr} />
-            <TeamsList teams={teams} />
+            <TeamsList teams={teams} league={params.leagueId} /> 
         </div>
     )
 }

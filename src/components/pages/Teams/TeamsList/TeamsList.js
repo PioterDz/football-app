@@ -5,7 +5,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { StatsDialog } from './StatsDialog/StatsDialog';
+import { Tooltip } from '@mui/material';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import { Link } from 'react-router-dom';
 
 export const TeamsList = ({ teams }) => {
 
@@ -21,6 +23,7 @@ export const TeamsList = ({ teams }) => {
                             <TableCell>Founded</TableCell>
                             <TableCell>Stadium</TableCell>
                             <TableCell>Capacity</TableCell>
+                            <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -47,13 +50,18 @@ export const TeamsList = ({ teams }) => {
                                 <TableCell>
                                     {row.venue.capacity}
                                 </TableCell>
+                                <TableCell>
+                                    <Link to={row.team.id}>
+                                        <Tooltip title={`See the ${row.team.name}'s statistics`}>
+                                            <QueryStatsIcon />
+                                        </Tooltip>
+                                    </Link>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-
-            <StatsDialog />
         </div>
     )
 }
