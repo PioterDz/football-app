@@ -3,12 +3,12 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { v4 as uuid } from 'uuid';
 
-export const Typeahead = ({ options, handleItemSelection }) => {
+export const Typeahead = ({ options, handleSelection }) => {
   const [value, setValue] = useState(null);
 
   function handleValueChange(newValue) {
     setValue(newValue);
-    handleItemSelection(newValue);
+    handleSelection(newValue);
   }
 
   return (

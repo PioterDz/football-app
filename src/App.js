@@ -3,6 +3,8 @@ import { NoMatch } from './components/pages/NoMatch/NoMatch';
 import './App.css';
 import { Home } from './components/pages/Home/Home';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Teams } from './components/pages/Teams/Teams';
+import { Main } from './components/pages/Main/Main';
 
 function App() {
   const darkTheme = createTheme({
@@ -20,7 +22,10 @@ function App() {
 
         <main className='main-container'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Main />}>
+              <Route path="" element={<Home />}></Route>
+              <Route path="team/:leagueId" element={<Teams />}></Route>
+            </Route>
             <Route path='*' element={<NoMatch />} />
           </Routes>
         </main>

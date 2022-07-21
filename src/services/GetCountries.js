@@ -1,16 +1,10 @@
 import { enviroment } from '../enviroments/enviroment';
-
-const axios = require('axios');
+import axios from 'axios';
 
 export async function getCountries() {
 
     try {
-        const config = {
-            headers: {
-                'X-RapidAPI-Key': process.env.REACT_APP_VERSION_API_KEY,
-                'X-RapidAPI-Host': process.env.REACT_APP_VERSION_API_HOST
-            }
-        }
+        const config = { headers: enviroment.headers };
         const response = await axios.get(enviroment.apiUrl + 'countries', config);
         return response.data;
     } catch(error) {

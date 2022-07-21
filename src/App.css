@@ -16,3 +16,13 @@
   min-height: calc(100vh - 72.5px - 20px - 21.5px);
   overflow: auto;
 }
+
+.logo-image, .flag-image {
+  width: 40px;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
