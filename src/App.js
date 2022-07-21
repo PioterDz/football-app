@@ -5,6 +5,7 @@ import { Home } from './components/pages/Home/Home';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Teams } from './components/pages/Teams/Teams';
 import { Main } from './components/pages/Main/Main';
+import { Statistics } from './components/pages/Statistics/Statistics';
 
 function App() {
   const darkTheme = createTheme({
@@ -25,6 +26,7 @@ function App() {
             <Route path='/' element={<Main />}>
               <Route path="" element={<Home />}></Route>
               <Route path="team/:leagueId" element={<Teams />}></Route>
+              <Route path="team/:leagueId/:teamId" element={<Statistics />}></Route>
             </Route>
             <Route path='*' element={<NoMatch />} />
           </Routes>
