@@ -1,11 +1,12 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { NoMatch } from './components/pages/NoMatch/NoMatch';
 import './App.css';
 import { Home } from './components/pages/Home/Home';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Teams } from './components/pages/Teams/Teams';
-import { Main } from './components/pages/Main/Main';
 import { Statistics } from './components/pages/Statistics/Statistics';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Main } from './components/pages/Main/Main';
+import React from 'react';
+import { Teams } from './components/pages/Teams/Teams';
 
 function App() {
   const darkTheme = createTheme({
@@ -16,26 +17,27 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className='App'>
-        <header className='App-header'>
-          <h2>Football App</h2>
+      <div className='app-container'>
+        <header className='app-header'>
+          <Link to="/">
+            <h2 className='c-pointer'>Football App</h2>
+          </Link>
         </header>
 
         <main className='main-container'>
           <Routes>
             <Route path='/' element={<Main />}>
               <Route path="" element={<Home />}></Route>
-              <Route path="team/:leagueId" element={<Teams />}></Route>
-              <Route path="team/:leagueId/:teamId" element={<Statistics />}></Route>
+              <Route path="league/:leagueId" element={<Teams />}></Route>
+              <Route path="league/:leagueId/team/:teamId" element={<Statistics />}></Route>
             </Route>
             <Route path='*' element={<NoMatch />} />
           </Routes>
         </main>
-
-        <footer className='footer'>
-          <small>by Piotur D. AD. July 2022</small>
-        </footer>
       </div>
+      <footer className='footer'>
+        <small>by Piotur D. AD. July 2022</small>
+      </footer>
 </ThemeProvider>
 
   );

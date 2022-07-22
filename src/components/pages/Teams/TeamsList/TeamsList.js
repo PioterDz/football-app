@@ -1,20 +1,25 @@
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Tooltip } from '@mui/material';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import { Link } from 'react-router-dom';
+import { CustomTable, CustomTableContainer } from '../../../shared/Table/Table';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-export const TeamsList = ({ teams }) => {
+export const TeamsList = ({ teams, season }) => {
 
     return (
-        <div>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 400 }} aria-label="teams table">
+        <div className='results'>
+            <Tooltip title='Go back'>
+                <Link className='c-pointer' to='..' style={{position: 'absolute', right: '0', top: '0', margin: '10px'}}>
+                    <ChevronLeftIcon />
+                </Link>
+            </Tooltip>
+            <CustomTableContainer component={Paper}>
+                <CustomTable aria-label="teams table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Logo</TableCell>
@@ -51,7 +56,7 @@ export const TeamsList = ({ teams }) => {
                                     {row.venue.capacity}
                                 </TableCell>
                                 <TableCell>
-                                    <Link to={row.team.id}>
+                                    <Link className='c-pointer' to={'team/' + row.team.id + `?season=${season}`}>
                                         <Tooltip title={`See the ${row.team.name}'s statistics`}>
                                             <QueryStatsIcon />
                                         </Tooltip>
@@ -60,8 +65,8 @@ export const TeamsList = ({ teams }) => {
                             </TableRow>
                         ))}
                     </TableBody>
-                </Table>
-            </TableContainer>
+                </CustomTable>
+            </CustomTableContainer>
         </div>
     )
 }
