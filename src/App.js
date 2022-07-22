@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { NoMatch } from './components/pages/NoMatch/NoMatch';
 import './App.css';
 import { Home } from './components/pages/Home/Home';
@@ -19,7 +19,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <div className='app-container'>
         <header className='app-header'>
-          <h2>Football App</h2>
+          <Link to="/">
+            <h2 className='c-pointer'>Football App</h2>
+          </Link>
         </header>
 
         <main className='main-container'>

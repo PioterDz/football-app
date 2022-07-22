@@ -56,7 +56,7 @@ export const TeamsList = ({ teams, season }) => {
                                     {row.venue.capacity}
                                 </TableCell>
                                 <TableCell>
-                                    <Link className='c-pointer' to={'team/' + row.team.id}>
+                                    <Link className='c-pointer' to={'team/' + row.team.id + `?season=${season}`}>
                                         <Tooltip title={`See the ${row.team.name}'s statistics`}>
                                             <QueryStatsIcon />
                                         </Tooltip>

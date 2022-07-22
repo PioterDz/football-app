@@ -1,7 +1,7 @@
 import { enviroment } from '../enviroments/enviroment';
 import axios from 'axios';
 
-export async function getTeamStatistics(leagueId, teamId, season = 2021) {
+export async function getTeamStatistics(leagueId, teamId, season) {
 
     try {
         const config = { headers: enviroment.headers, params: { league: leagueId, team: teamId, season } };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Paper, TableBody, TableCell, TableHead, TableRow, ToggleButtonGroup, Tooltip, Typography } from "@mui/material";
 import { DrawBtn, LoseBtn, WinBtn } from "../../shared/Buttons/Buttons";
 import { getTeamStatistics } from "../../../services/GetTeamStatistics";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { SkeletonLoader } from "../../shared/SkeletonLoader/SkeletonLoader";
 import { v4 as uuid } from 'uuid';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -11,25 +11,26 @@ import { CustomTableContainer, CustomTable } from "../../shared/Table/Table";
 export const Statistics = () => {
     const [stats, setStats] = useState([]);
     const [isLoading, setLoading] = useState(true);
-    const params = useParams();
+    const [searchParams, ] = useSearchParams();
+    const { teamId, leagueId } = useParams();
 
     useEffect(() => {
-        const { teamId, leagueId } = params;
-        if(teamId && leagueId) {
+        const season = searchParams.get('season');
+        if(teamId && leagueId && season) {
             async function fetchData() {
-                const data = await getTeamStatistics(leagueId, teamId);
+                const data = await getTeamStatistics(leagueId, teamId, season);
                 setStats(data);
                 setLoading(false);
             }
             fetchData();
         }
-    }, [params]);
+    }, [teamId, leagueId, searchParams]);
 
     return (
         isLoading ? <SkeletonLoader /> : (
             <CustomTableContainer component={Paper}>
                 <Tooltip title='Go back'>
-                    <Link className='c-pointer' to={`/league/${params.leagueId}`} style={{position: 'absolute', right: '0', top: '0', margin: '10px'}}>
+                    <Link className='c-pointer' to={`/league/${leagueId}`} style={{position: 'absolute', right: '0', top: '0', margin: '10px'}}>
                         <ChevronLeftIcon />
                     </Link>
                 </Tooltip>

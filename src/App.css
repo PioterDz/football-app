@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(100vh - 92.5px);
+  height: calc(100vh - 35px);
 }
 
 .app-container, .footer {
