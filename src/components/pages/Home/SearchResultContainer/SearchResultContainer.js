@@ -5,19 +5,20 @@ import { CountryCard } from './CountryCard/CountryCard';
 
 export const SearchResultContainer = ({ country }) => {
     const [leagues, setLeagues] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             if(country.code) {
                 const data = await getLeagues(country.code);
-                console.log(data.response);
-                setLeagues(data.response.map(x => x.league))
+                setLeagues(data.response.map(x => x.league));
+                setLoading(false);
             }
         }
         fetchData();
     }, [country]);
 
     return (
-        leagues.length > 0 ? <CountryCard country={country} leagues={leagues} /> : <SkeletonLoader />
-    )
+        isLoading ? <SkeletonLoader /> : <CountryCard country={country} leagues={leagues} />
+    );
 }

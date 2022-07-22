@@ -1,19 +1,18 @@
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import { Link } from "react-router-dom";
 import { Tooltip } from '@mui/material';
+import { CustomTable, CustomTableContainer } from '../../../../../shared/Table/Table';
 
 export const LeaguesTable = ({ leagues }) => {
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 400 }} aria-label="leagues table">
+        <CustomTableContainer component={Paper}>
+            <CustomTable sx={{ minWidth: 400, height: 'max-content' }} aria-label="leagues table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Logo</TableCell>
@@ -34,7 +33,7 @@ export const LeaguesTable = ({ leagues }) => {
                                 {row.name}
                             </TableCell>
                             <TableCell>
-                                <Link to={'team/' + row.id}>
+                                <Link className='c-pointer' to={'league/' + row.id}>
                                     <Tooltip title={`See the ${row.name}'s teams`}>
                                         <GroupsRoundedIcon />
                                     </Tooltip>
@@ -43,7 +42,7 @@ export const LeaguesTable = ({ leagues }) => {
                         </TableRow>
                     ))}
                 </TableBody>
-            </Table>
-        </TableContainer>
+            </CustomTable>
+        </CustomTableContainer>
     )
 }

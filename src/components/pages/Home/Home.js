@@ -12,7 +12,7 @@ export const Home = () => {
     return (
         <div>
             <SearchBar itemSelected={handleCountriesSelection} />
-            {country.code ? <SearchResultContainer country={country} /> : null}
+            {country?.code ? <SearchResultContainer country={country} /> : null}
         </div>
     )
 }
